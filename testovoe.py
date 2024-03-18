@@ -6,13 +6,13 @@ class TreeStore:
         return self.items
 
     def get_item(self, id):
-        for item in items:
+        for item in self.items:
             if item.get('id') == id:
                 return item
 
     def get_children(self, id):
         item_list = []
-        for item in items:
+        for item in self.items:
             if item.get('parent') == id:
                 item_list.append(item)
         return item_list
@@ -32,7 +32,7 @@ class TreeStore:
         return parent_list
 
 
-items = [
+ITEMS = [
     {"id": 1, "parent": "root"},
     {"id": 2, "parent": 1, "type": "test"},
     {"id": 3, "parent": 1, "type": "test"},
@@ -42,16 +42,16 @@ items = [
     {"id": 7, "parent": 4, "type": None},
     {"id": 8, "parent": 4, "type": None}
 ]
-ts = TreeStore(items)
+ts = TreeStore(ITEMS)
 
 
 ts.get_all()
-assert ts.get_all() == items
+assert ts.get_all() == ITEMS
 
 ts.get_item(7)
-assert ts.get_item(7) == items[-2]
-assert ts.get_item(1) == items[0]
-assert ts.get_item(8) == items[-1]
+assert ts.get_item(7) == ITEMS[-2]
+assert ts.get_item(1) == ITEMS[0]
+assert ts.get_item(8) == ITEMS[-1]
 
 ts.get_children(4)
 assert ts.get_children(4) == [{"id": 7, "parent": 4, "type": None},
