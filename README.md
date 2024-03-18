@@ -14,6 +14,7 @@
 
 
 # Примеры использования:
+```
  - ts.get_all() // [
                      {"id":1,"parent":"root"},
                      {"id":2,"parent":1,"type":"test"},
@@ -39,3 +40,4 @@
                                  {"id":2,"parent":1,"type":"test"},
                                  {"id":1,"parent":"root"}
                              ]
+```
