@@ -26,8 +26,8 @@ class TreeStore:
             if parent_id == 'root':
                 break
             parent_item = self.get_item(parent_id)
-            self.get_all_parents(parent_id)
             parent_list.append(parent_item)
+            self.get_all_parents(parent_id)
             item = parent_item
         return parent_list
 
