@@ -1,31 +1,31 @@
 class TreeStore:
     def __init__(self, items) -> None:
-        self.items = items
+        self.items: list[dict] = items
 
-    def get_all(self):
+    def get_all(self) -> list[dict]:
         return self.items
 
-    def get_item(self, id):
+    def get_item(self, id) -> dict | None:
         for item in self.items:
             if item.get('id') == id:
                 return item
 
-    def get_children(self, id):
-        item_list = []
+    def get_children(self, id: int) -> list:
+        item_list: list = []
         for item in self.items:
             if item.get('parent') == id:
                 item_list.append(item)
         return item_list
 
-    def get_all_parents(self, id):
-        parent_list = []
-        item = self.get_item(id)
+    def get_all_parents(self, id: int) -> list:
+        parent_list: list = []
+        item: dict = self.get_item(id)
 
         while item:
-            parent_id = item.get('parent')
+            parent_id: int = item.get('parent')
             if parent_id == 'root':
                 break
-            parent_item = self.get_item(parent_id)
+            parent_item: dict = self.get_item(parent_id)
             parent_list.append(parent_item)
             self.get_all_parents(parent_id)
             item = parent_item
